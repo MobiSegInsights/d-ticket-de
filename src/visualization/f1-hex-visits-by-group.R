@@ -146,4 +146,4 @@ g2 <- time.series.plot(data=df.date.dt, policy='dt', var='visit', yl1=40, yl2=15
 g4 <- time.series.plot(data=df.date.dt, policy='dt', var='distance', yl1=4, yl2=25)
 G <- ggarrange(g2, g4, ncol = 2, nrow = 1, labels = c('a', 'b'), common.legend = T)
 ggsave(filename = paste0("figures/manuscript/hex_time_series_", gp, '_', lv, "_dt.png"),
-       plot=G, width = 13, height = 4, unit = "in", dpi = 300, bg = 'white')
+       plot=G, width = 12, height = 5, unit = "in", dpi = 300, bg = 'white')
