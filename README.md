@@ -1,25 +1,29 @@
-# Understanding the impact of the 9-Euro Ticket Scheme in Germany on mobility, activity, and segregation
+# Uncovering the Social and Spatial Effects of Fare Cuts on Public Transport with Mobile Geolocation Data
+Using large-scale mobile geolocation data from over 11.1 million mobile phone devices, covering 11.7 billion geolocation records in March, April, and May for 2022 and 2023, we employed a difference-in-difference model to assess changes in visitor volumes and distance of trips to various locations across Germany.
+
 A perspective of big mobile phone geolocation data, part of the [parent project](https://github.com/MobiSegInsights).
 
-The German government launched an innovative pilot project in the summer of 2022, offering a ‘9-Euro Ticket’ for unlimited monthly travel on trains and buses in June, July, and August. 
-This initiative was designed to boost the use of public transportation and evaluate its effects on traffic patterns and commuting habits. 
-Traditionally, studies on such changes have depended on travel survey data.
-This research adopts a novel approach by analyzing extensive anonymized mobile geolocation data from the phones of German adults, spanning 15 months across May to September for the years 2019, 2022, and 2023. 
-This study aims to investigate the adult population's mobility and activity trends and their resulted socio-spatial segregation patterns.
-Through this study, we aim to gain a deeper understanding of the shifts in societal movement triggered by the ‘9-Euro Ticket’ initiative while also accounting for the increase in travel following the easing of COVID-19 restrictions.
+## Dependencies
+Python (version 3.11) code and R (version 4.0.2) code were used to analyse and visualize the data. 
+The stays have been detected via infostop (version 0.1.11) and pyspark (version 3.5.1).
 
 ## Data
-Large-scale geolocation data gathered from multiple sources presents a unique chance to gain insights into human movement patterns and the physical layout of spaces.
-Mobile application geolocation data, an economical option for collecting anonymized data on population movement, records the GPS coordinates and timestamps of smartphone users engaging with apps that have location tracking enabled. 
-These data provide detailed spatial and temporal geolocations across a wide demographic, all while maintaining user privacy by omitting personal details.
-
-An existing dataset of anonymised MAD for Germany is available, covering 15 months in 2019, 2022, and 2023. 
-Due to privacy concerns, the raw data cannot be shared. 
-However, we will make available aggregated outcomes of mobility, activity, and social segregation changes. 
-These results will be provided with detailed spatial and temporal precision for public access.
+The data supporting the findings of this study were purchased from [PickWell](https://www.pickwell.co/) and 
+are subject to restrictions due to licensing 
+and privacy considerations under the European General Data Protection Regulation. 
+Consequently, these data are not publicly available. 
+Venue locations and categories were obtained from [OpenStreetMap](https://download.geofabrik.de/europe.html).
 
 ## Scripts
 The repo contains the scripts (`src/`), libraries (`lib/`) for conducting the data processing, analysis, and visualisation.
 The original input data are stored under `dbs/` locally and intermediate results are stored in a local database.
-Only results directly used for visualisation and upcoming article writing are stored under `results/`.
 The produced figures are stored under `figures/`.
+
+Under `src/`, the scripts are stored by their functionality, with the first number indicating the
+order of running the script.
+This is because some later analysis may depend on earlier steps.
+
+- `src/data_etl/` do data extraction and preprocessing.
+- `src/data_exp/` explore the data, produce descriptive statistics, and conduct statistical analysis.
+- `src/models/` do the panel regression modeling and permutation test.
+- `src/visualization/` produce figures inserted in the manuscript.
